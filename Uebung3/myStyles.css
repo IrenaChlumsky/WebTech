@@ -1,0 +1,53 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2%;
+  padding: 2%;
+}
+
+.citycard {
+  max-width: 180px;
+  width: 100%;
+}
+.cityimage img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+header{
+    background-color: rgb(11, 184, 11);
+    padding: 18px;
+    text-align: center;
+    color: white;
+    font-size: 26px;
+}
+.citycard{
+    border: solid grey;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  justify-content: space-between;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.cityimage {
+    align-items: center;
+    text-align: center;
+   max-width: 100%;
+   max-height: 100%;
+   
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  
+}
+.cityimage img[alt="Berlin"] {
+  transform: scale(2) translateY(20px);
+  align-items: center;
+    
+}
+.cityname{
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+}
