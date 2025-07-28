@@ -1,0 +1,13 @@
+# Node.js (für spätere Backend-Projekte)
+node_modules/
+
+# Mac/Windows-Systemdateien
+.DS_Store
+Thumbs.db
+
+# Editor- und Arbeitsdateien
+.vscode/
+*.log
+
+# dotenv (für Passwörter und Zugangsdaten)
+.env
