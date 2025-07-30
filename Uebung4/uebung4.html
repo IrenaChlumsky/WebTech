@@ -19,11 +19,14 @@
     <div class="col-md-8">
       <div class="border p-4 rounded shadow bg-light">
  <h2 class="display-8 fw-bold"> Teilnehmerin Registrierung</h2>
+<form id="meinFormular" class="row g-3 needs-validation" novalidate>
+
                 <div class="row mb-3">
                     <div class="col-md-6">
                     
-                        <input type="text" class="form-control" placeholder="Firstname" aria-label="Firstname" aria-describedby="basic-addon1">
-                    
+                        <input type="text" class="form-control" id = Vorname placeholder="Firstname" aria-label="Firstname" aria-describedby="basic-addon1" required>
+                        <div class="invalid-feedback"></div>
+                        Please enter your first name
                         </div>
                     
                 
@@ -31,7 +34,10 @@
                     <div class="col-md-6">
                        
                             
-                                <input type="text" class="form-control" placeholder="Lastname" aria-label="Lastname" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" id = Nachname placeholder="Lastname" aria-label="Lastname" aria-describedby="basic-addon1" required>
+                            <div class="invalid-feedback"></div>
+                            Please enter your last name
+                           
                             </div>
                     
                     </div>
@@ -40,7 +46,9 @@
                 <div class="row mb-3">
                 <div class="col-md-6">
                     
-                        <input type="text" class="form-control" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" id = E-mail placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1"required>
+                         <div class="invalid-feedback"></div>
+                         Please enter your E-mail
                 </div>
                     
                 
@@ -48,12 +56,25 @@
                 <div class="col-md-6">
                    
                         
-                                <input type="text" class="form-control" placeholder="IPadress" aria-label="IPadress" aria-describedby="basic-addon1">
-                        </div>
+                                <input type="text" class="form-control" id = IPadresse placeholder="IPadress" aria-label="IPadress" aria-describedby="basic-addon1"required>
+                        <div class="invalid-feedback"></div>
+                        Please enter your IPadress
+                            </div>
                     
-              </div>
-              <button type="button" class="btn btn-secondary">Abbrechen</button>
-               <button type="button" class="btn btn-success">Registrieren</button>
+             <div class="row">
+  <div class="col-md-6">
+    <button type="button" id="Abbrechen" class="btn btn-secondary w-100">Abbrechen</button>
+  </div>
+  <div class="col-md-6">
+    <button type="button" id="Registrieren" class="btn btn-success w-100">Registrieren</button>
+  </div>
+</div>
+
+               <div class = mt-4>
+                    <h5>Eingegebene Werte:</h5>
+                    <ul id = "ausgabe" class="list-group"></ul>
+                        
+
                </div>
                
     </div>
@@ -61,6 +82,7 @@
 </div>
 
 </div>
-  
+  <script src="script.js"></script>
+
 </body>
 </html>
