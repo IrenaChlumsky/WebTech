@@ -1,0 +1,13 @@
+nav {
+    background-color: black;
+    padding: 10px;
+}
+a{
+    color: rgb(253, 252, 252);
+    margin: 5px;
+    padding-top: 10px;
+
+}
+a:hover {
+  text-decoration: underline;
+}
