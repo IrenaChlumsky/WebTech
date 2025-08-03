@@ -2,12 +2,16 @@ nav {
     background-color: black;
     padding: 10px;
 }
-a{
-    color: rgb(253, 252, 252);
-    margin: 5px;
-    padding-top: 10px;
-
+nav a,
+nav a:visited,
+nav a:active,
+nav a:link {
+  color: white !important;
+  text-decoration: none;
+  padding:5px;
 }
-a:hover {
+
+nav a:hover {
+  color: #ccc !important;
   text-decoration: underline;
 }
