@@ -4,18 +4,17 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NavComponent } from './nav/nav.component';
 import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
-import { MatSidenavContent } from "@angular/material/sidenav";
-import { MatSidenavContainer, MatSidenav } from "../../node_modules/@angular/material/sidenav/index";
-
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,
+  imports: [
+    RouterOutlet,
     MatSlideToggleModule,
     NavComponent,
     FormComponent,
-    TableComponent, MatSidenavContent, MatSidenavContainer, MatSidenav],
+    TableComponent
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
