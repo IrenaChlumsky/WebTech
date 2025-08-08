@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { BackendService } from '../shared/backend';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-form',
@@ -25,34 +27,33 @@ import { MatSelectModule } from '@angular/material/select';
   ]
 })
 export class FormComponent {
-  addressForm: FormGroup;
-  hasUnitNumber = false;
+  // Formular
+  userForm: FormGroup;
 
-  states = [
-    { name: 'Berlin', abbreviation: 'BE' },
-    { name: 'Hamburg', abbreviation: 'HH' },
-    { name: 'Bayern', abbreviation: 'BY' },
-    { name: 'Sachsen', abbreviation: 'SN' },
-    { name: 'NRW', abbreviation: 'NW' }
-  ];
+  // Backend-Service
+  private bs = inject(BackendService);
+
+  // Beispieloptionen für Rolle
+  roles = ['admin', 'user', 'guest'];
 
   constructor(private fb: FormBuilder) {
-    this.addressForm = this.fb.group({
-      company: [''],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      address: ['', Validators.required],
-      address2: [''],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      postalCode: [''],
-      shipping: ['free']
+    this.userForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      role: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    if (this.addressForm.valid) {
-      console.log('Formular abgeschickt:', this.addressForm.value);
+    if (this.userForm.valid) {
+      const newUser: User = this.userForm.value;
+      console.log('Formular abgeschickt:', newUser);
+
+      this.bs.createNewUser(newUser).subscribe({
+        next: (res) => console.log('User erfolgreich erstellt:', res),
+        error: (err) => console.error('Fehler beim Erstellen des Users:', err)
+      });
     } else {
       console.log('Formular ist ungültig');
     }

@@ -5,6 +5,7 @@ import { TableComponent } from './table/table.component';
 
 
 export const routes: Routes = [
+   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '', component: Home }
   ,{ path: 'form', component: FormComponent },
  { path: 'table', component: TableComponent }
