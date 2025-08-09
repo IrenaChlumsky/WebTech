@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  width: 220px;
+  flex-shrink: 0;
+  background: #0f0101;        
+  border-right: 1px solid #fdf9f9;
+ 
+} 
+
+.sideNav {
+  height: 100%;    /* Damit die Sidebar die volle Höhe einnimmt   */        
+  padding: 1rem;
+}
+
+.sideNav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sideNav a {
+  text-decoration: none;
+  color: #f5f4f4;
+}
