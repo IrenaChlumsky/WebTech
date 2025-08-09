@@ -1,5 +1,15 @@
-<app-header></app-header>
+<div class = "layout">
+        <app-header class = "hdr"></app-header>
+ 
+         <div class = "body">
+            <app-nav class = "sideNav"></app-nav>
 
-<router-outlet />
-<app-nav></app-nav>
-<app-footer></app-footer>
+                <main class="content">
+
+                    <router-outlet></router-outlet>
+
+                 </main>
+
+        </div>
+    <app-footer class = "footer"></app-footer>
+</div>
