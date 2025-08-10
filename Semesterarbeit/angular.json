@@ -12,7 +12,12 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
-          "options": {
+          "options": {"assets": [
+  "src/favicon.ico",
+  "src/assets",
+  { "glob": "**/*", "input": "public" }
+],
+
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
