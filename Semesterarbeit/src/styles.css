@@ -1,8 +1,8 @@
 
-html, body { 
-  height: 100%;
-  margin: 0;          
-  padding: 0;
-  background-color: rgb(237, 233, 233);
+html,body{margin:0}
+body{
+  font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  background:#f5f6f8;               /* sanftes Hellgrau */
 }
 * { box-sizing: border-box; }
