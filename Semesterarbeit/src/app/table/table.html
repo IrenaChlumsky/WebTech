@@ -15,25 +15,35 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Platzhalter-Zeile, nur fürs Layout -->
-        <tr>
-          <td>1</td>
-          <td>Pikachu</td>
-          <td>Elektro</td>
-          <td>—</td>
-          <td>25</td>
-          <td>Donnerblitz · Ruckzuckhieb</td>
-          <td class="text-end">
-            <div class="btn-group btn-group-sm" role="group" aria-label="Aktionen">
-              <button type="button" class="btn btn-outline-secondary" title="Bearbeiten" aria-label="Bearbeiten">
-                <i class="bi bi-pencil"></i>
-              </button>
-              <button type="button" class="btn btn-outline-danger" title="Löschen" aria-label="Löschen">
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
+        @for (p of pokemons;track $index; let i = $index) {
+    <tr>
+      <td>{{ i + 1 }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.type1 }}</td>
+      <td>{{ p.type2 ?? '—' }}</td>
+      <td>{{ p.level }}</td>
+      <td>{{ p.attacks.join(' · ') }}</td>
+    <td class="text-end">
+  <div class="btn-group btn-group-sm" role="group" aria-label="Aktionen">
+    <button type="button" class="btn btn-outline-secondary"
+            title="Bearbeiten" aria-label="Bearbeiten"
+            (click)="onEdit(p)">
+      <i class="bi bi-pencil"></i>
+    </button>
+    <button type="button" class="btn btn-outline-danger"
+            title="Löschen" aria-label="Löschen"
+            (click)="onRemove(p)">
+      <i class="bi bi-trash"></i>
+    </button>
+  </div>
+</td>
+
+    </tr>
+  } @empty {
+    <tr>
+      <td colspan="7" class="text-center text-muted">Noch keine Einträge.</td>
+    </tr>
+  }
       </tbody>
     </table>
   </div>
