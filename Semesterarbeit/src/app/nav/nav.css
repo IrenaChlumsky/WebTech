@@ -2,10 +2,9 @@
   display: block;
   width: 220px;
   flex-shrink: 0;
-  background: #4e4b4ba2;        
+  background:#f5f6f8;       
  
-  border-right: 1px solid rgba(255,255,255,.08);
-  box-shadow: 12px 0 16px -12px rgba(0,0,0,.35);
+
   
 
  
@@ -25,7 +24,7 @@
   display:block; 
   padding:.6rem .75rem; 
   border-radius:.5rem;
-  color:#e9eef3; text-decoration:none;
+  color:#0b0c0c; text-decoration:none;
 }
 .sideNav a:hover{ background:#444; }
 .sideNav a.active{ background:#555; font-weight:600; }
