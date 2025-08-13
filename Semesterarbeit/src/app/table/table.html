@@ -30,7 +30,7 @@
   </div>
 </div>
 
-  <div class="table-responsive">
+  <div class="table-responsive"*ngIf="!loading && !error">
     <table class="table table-striped table-hover align-middle">
       <thead class="table-light">
         <tr>
@@ -44,7 +44,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (p of pokemons;track $index; let i = $index) {
+        @for (p of view;track $index; let i = $index) {
     <tr>
       <td>{{ i + 1 }}</td>
       <td>{{ p.name }}</td>
