@@ -1,0 +1,31 @@
+.filterbar {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.filters input {
+  min-width: 18ch; /* etwas Breite, sonst wackelt's */
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.empty { text-align: center; opacity: .7; }

@@ -3,18 +3,22 @@
   <div class="filterbar" *ngIf="!loading && !error">
   <div class="filters">
     <label>
-      <span>Name beginnt mit</span>
+      <span>filtern nach Name</span>
       <input
         type="text"
+        class="form-control"
+        aria-label="Pokémon-Name"
         #nameInput
         placeholder="z. B. Pika…"
         (input)="filterPokemon(nameInput.value, typeInput.value)"
       />
     </label>
       <label>
-      <span>Typ enthält</span>
+      <span>filtern nach Typ</span>
       <input
         type="text"
+        class="form-control"
+        aria-label="Pokémon-Typ"
         #typeInput
         placeholder="z. B. Feuer / Elektro"
         (input)="filterPokemon(nameInput.value, typeInput.value)"
@@ -23,7 +27,8 @@
   </div>
 
   <div class="actions">
-    <button type="button" (click)="resetFilter(nameInput, typeInput)">Zurücksetzen</button>
+    
+    <button class="btn btn-outline-secondary" (click)="resetFilter(nameInput, typeInput)">Zurücksetzen</button>
     <span class="count" *ngIf="view?.length || view?.length === 0">
       {{ view.length }} / {{ pokemons.length }} Einträge
     </span>
