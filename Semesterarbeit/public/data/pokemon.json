@@ -1,3 +1,15 @@
 [
-  { "name": "Pikachu", "level": 25, "type1": "Elektro", "attacks": ["Donnerblitz","Ruckzuckhieb"] }
+ { "name": "Pikachu",   "level": 25, "type1": "Elektro",          "attacks": ["Donnerblitz", "Ruckzuckhieb", "Donnerwelle"] },
+  { "name": "Bisasam",   "level": 8,  "type1": "Pflanze", "type2": "Gift",   "attacks": ["Rankenhieb", "Egelsamen"] },
+  { "name": "Glumanda",  "level": 10, "type1": "Feuer",            "attacks": ["Glut", "Kratzer"] },
+  { "name": "Schiggy",   "level": 9,  "type1": "Wasser",           "attacks": ["Aquaknarre", "Tackle"] },
+  { "name": "Evoli",     "level": 14, "type1": "Normal",           "attacks": ["Tackle", "Sandwirbel"] },
+  { "name": "Taubsi",    "level": 7,  "type1": "Normal", "type2": "Flug",    "attacks": ["Windstoß", "Sandwirbel"] },
+  { "name": "Raupy",     "level": 5,  "type1": "Käfer",            "attacks": ["Fadenschuss", "Tackle"] },
+  { "name": "Hornliu",   "level": 5,  "type1": "Käfer",  "type2": "Gift",    "attacks": ["Giftstachel", "Fadenschuss"] },
+  { "name": "Kleinstein","level": 12, "type1": "Gestein","type2":"Boden",    "attacks": ["Tackle", "Steinwurf"] },
+  { "name": "Nebulak",   "level": 16, "type1": "Geist",  "type2": "Gift",    "attacks": ["Schlecker", "Hypnose"] },
+  { "name": "Sandan",    "level": 11, "type1": "Boden",           "attacks": ["Kratzer", "Sandwirbel"] },
+  { "name": "Pummeluff", "level": 13, "type1": "Normal",          "attacks": ["Gesang", "Pfund"] }
 ]
+
