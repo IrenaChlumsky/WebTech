@@ -1,10 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { DataService } from '../shared/data';
 import { Pokemon } from '../shared/pokemon';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-table',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './table.html',
   styleUrl: './table.css'
 })

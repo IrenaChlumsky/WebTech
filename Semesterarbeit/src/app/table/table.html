@@ -1,5 +1,34 @@
 <div class="container py-3">
   <h2 class="mb-3">Pokémon-Liste</h2>
+  <div class="filterbar" *ngIf="!loading && !error">
+  <div class="filters">
+    <label>
+      <span>Name beginnt mit</span>
+      <input
+        type="text"
+        #nameInput
+        placeholder="z. B. Pika…"
+        (input)="filterPokemon(nameInput.value, typeInput.value)"
+      />
+    </label>
+      <label>
+      <span>Typ enthält</span>
+      <input
+        type="text"
+        #typeInput
+        placeholder="z. B. Feuer / Elektro"
+        (input)="filterPokemon(nameInput.value, typeInput.value)"
+      />
+    </label>
+  </div>
+
+  <div class="actions">
+    <button type="button" (click)="resetFilter(nameInput, typeInput)">Zurücksetzen</button>
+    <span class="count" *ngIf="view?.length || view?.length === 0">
+      {{ view.length }} / {{ pokemons.length }} Einträge
+    </span>
+  </div>
+</div>
 
   <div class="table-responsive">
     <table class="table table-striped table-hover align-middle">
