@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const Pokemon = require('./models/pokemon');
 
 
-router.get('/', async(req, res) => {
-
-    res.send({ message: "Hello FIW!" });
+router.get('/pokemon', async(req, res) => {
+    const allPokemon = await Pokemon.find();
+    res.send(allPokemon);
+ 
 });
 
 module.exports = router;
