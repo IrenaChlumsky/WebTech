@@ -29,9 +29,18 @@ router.get('/pokemon/:id', async (req, res) => {
     res.send(pokemon);
   } else {
     res.status(404).send({
-      error: "Pokémon existiert nicht!"
+      error: "Pokemon does not exist!"
     });
   }
+});
+router.delete('/pokemon/:id', async(req, res) => {
+    try {
+        await Pokemon.deleteOne({ _id: req.params.id })
+        res.status(204).send()
+    } catch {
+        res.status(404)
+        res.send({ error: "Pokemon does not exist!" })
+    }
 });
 
 
