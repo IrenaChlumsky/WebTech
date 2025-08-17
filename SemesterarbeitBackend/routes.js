@@ -21,4 +21,19 @@ router.post('/pokemon', async(req, res) => {
 });
 
 
+router.get('/pokemon/:id', async (req, res) => {
+  const pokemon = await Pokemon.findOne({ _id: req.params.id });
+ 
+
+  if (pokemon) {
+    res.send(pokemon);
+  } else {
+    res.status(404).send({
+      error: "Pokémon existiert nicht!"
+    });
+  }
+});
+
+
+
 module.exports = router;
