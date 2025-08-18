@@ -15,4 +15,8 @@ export class BackendService {
     return pokemon as Pokemon[];
   }
 
+async delete(id: string): Promise<void> {
+  await fetch(`${this.apiURL}/pokemon/${id}`, { method: 'DELETE' });
+}
+
 }

@@ -4,6 +4,7 @@ export type PokemonType =
   | 'Gestein'| 'Geist' | 'Drache' | 'Unlicht' | 'Stahl'   | 'Fee';  
 
 export interface Pokemon {
+  _id?: string;
   name: string;
   level: number;     
   type1: PokemonType; 

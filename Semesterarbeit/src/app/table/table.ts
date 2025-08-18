@@ -63,9 +63,12 @@ onEdit(p: Pokemon) {
   console.log('edit', p);
 }
 
-onRemove(p: Pokemon) {
-  console.log('remove', p);
+async onRemove(id: string) {
+  await this.backend.delete(id);                                
+  this.pokemons = this.pokemons.filter(x => x._id !== id);      // UI aktualisieren
+  this.view = [...this.pokemons];
 }
+
 
 
 }
