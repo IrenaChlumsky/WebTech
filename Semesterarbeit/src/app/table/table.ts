@@ -1,8 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DataService } from '../shared/data';
 import { Pokemon } from '../shared/pokemon';
 import { CommonModule } from '@angular/common';
-
+import { BackendService } from '../shared/backend';
 
 @Component({
   selector: 'app-table',
@@ -11,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './table.css'
 })
 export class Table implements OnInit {
-private data = inject(DataService);
+private backend = inject(BackendService);
 
   pokemons: Pokemon[] = [];
    view: Pokemon[] = [];
@@ -22,7 +21,7 @@ private data = inject(DataService);
 
   async ngOnInit() {
     try {
-      this.pokemons = await this.data.getAll();
+      this.pokemons = await this.backend.getAll();
       this.view = [...this.pokemons];
     } catch (e) {
       this.error = (e as Error).message ?? 'Fehler beim Laden';

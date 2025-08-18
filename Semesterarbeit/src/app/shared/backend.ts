@@ -4,7 +4,7 @@ import { Pokemon } from './pokemon';
   providedIn: 'root'
 })
 export class BackendService {
-    apiURL = 'http://localhost:3000/api'
+    apiURL = 'http://localhost:3000';
 
   constructor() { }
 
