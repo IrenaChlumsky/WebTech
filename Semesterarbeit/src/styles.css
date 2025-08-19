@@ -3,6 +3,6 @@ html,body{margin:0}
 body{
   font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.5;
-  background:#f5f6f8;              
+  background: #f0f8ff;         
 }
 * { box-sizing: border-box; }
