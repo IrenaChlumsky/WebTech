@@ -59,11 +59,7 @@
       <td>{{ p.attacks.join(' · ') }}</td>
     <td class="text-end">
   <div class="btn-group btn-group-sm" role="group" aria-label="Aktionen">
-    <button type="button" class="btn btn-outline-secondary"
-            title="Bearbeiten" aria-label="Bearbeiten"
-            (click)="onEdit(p)">
-      <i class="bi bi-pencil"></i>
-    </button>
+   
     <button type="button" class="btn btn-outline-danger"
             title="Löschen" aria-label="Löschen"
             (click)="onRemove(p._id!)"
