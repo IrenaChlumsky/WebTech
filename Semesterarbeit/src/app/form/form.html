@@ -1,56 +1,69 @@
 <div class="container py-3">
-   <div class="form-card">
-  <h2 class="mb-3">Pokémon eingeben</h2>
+  <div class="form-card">
+    <h2 class="mb-3">Pokémon eingeben</h2>
 
-  <form class="row g-3">
-   
-    <div class="col-md-6">
-      <label for="name" class="form-label">Name *</label>
-      <input id="name" class="form-control" placeholder="z. B. Pikachu">
-    </div>
+    <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="col-md-6">
+        <label for="name" class="form-label">Name *</label>
+        <input id="name" class="form-control" placeholder="z. B. Pikachu" formControlName="name">
+        <div class="text-danger mt-1"
+             *ngIf="form.controls.name.invalid && form.controls.name.touched">
+          Name ist erforderlich.
+        </div>
+      </div>
 
-    <div class="col-md-6">
-      <label for="level" class="form-label">Level *</label>
-      <input id="level" type="number" min="1" max="100" class="form-control" placeholder="1–100">
-    </div>
+      <div class="col-md-6">
+        <label for="level" class="form-label">Level *</label>
+        <input id="level" type="number" min="1" max="100" class="form-control" placeholder="1–100"
+               formControlName="level">
+        <div class="text-danger mt-1"
+             *ngIf="form.controls.level.errors?.['required'] && form.controls.level.touched">
+          Level ist erforderlich.
+        </div>
+        <div class="text-danger mt-1" *ngIf="form.controls.level.errors?.['min'] && form.controls.level.touched">Level ≥ 1</div>
+        <div class="text-danger mt-1" *ngIf="form.controls.level.errors?.['max'] && form.controls.level.touched">Level ≤ 100</div>
+      </div>
 
-    <div class="col-md-6">
-      <label for="type1" class="form-label">Haupttyp *</label>
-      <select id="type1" class="form-select">
-        <option value="">– wählen –</option>
-        <option>Normal</option><option>Feuer</option><option>Wasser</option>
-        <option>Pflanze</option><option>Elektro</option><option>Eis</option>
-        <option>Kampf</option><option>Gift</option><option>Boden</option>
-        <option>Flug</option><option>Psycho</option><option>Käfer</option>
-        <option>Gestein</option><option>Geist</option><option>Drache</option>
-        <option>Unlicht</option><option>Stahl</option><option>Fee</option> 
-      </select>
-    </div>
+      <div class="col-md-6">
+        <label for="type1" class="form-label">Haupttyp *</label>
+        <select id="type1" class="form-select" formControlName="type1">
+          <option value="">– wählen –</option>
+          <option>Normal</option><option>Feuer</option><option>Wasser</option>
+          <option>Pflanze</option><option>Elektro</option><option>Eis</option>
+          <option>Kampf</option><option>Gift</option><option>Boden</option>
+          <option>Flug</option><option>Psycho</option><option>Käfer</option>
+          <option>Gestein</option><option>Geist</option><option>Drache</option>
+          <option>Unlicht</option><option>Stahl</option><option>Fee</option>
+        </select>
+        <div class="text-danger mt-1"
+             *ngIf="form.controls.type1.invalid && form.controls.type1.touched">
+          Haupttyp ist erforderlich.
+        </div>
+      </div>
 
-    <div class="col-md-6">
-      <label for="type2" class="form-label">Zweittyp (optional)</label>
-      <select id="type2" class="form-select">
-        <option value="">— keiner —</option>
-      
-        <option>Normal</option><option>Feuer</option><option>Wasser</option>
-        <option>Pflanze</option><option>Elektro</option><option>Eis</option>
-        <option>Kampf</option><option>Gift</option><option>Boden</option>
-        <option>Flug</option><option>Psycho</option><option>Käfer</option>
-        <option>Gestein</option><option>Geist</option><option>Drache</option>
-        <option>Unlicht</option><option>Stahl</option><option>Fee</option>
-      </select>
-    </div>
+      <div class="col-md-6">
+        <label for="type2" class="form-label">Zweittyp (optional)</label>
+        <select id="type2" class="form-select" formControlName="type2">
+          <option value="">— keiner —</option>
+          <option>Normal</option><option>Feuer</option><option>Wasser</option>
+          <option>Pflanze</option><option>Elektro</option><option>Eis</option>
+          <option>Kampf</option><option>Gift</option><option>Boden</option>
+          <option>Flug</option><option>Psycho</option><option>Käfer</option>
+          <option>Gestein</option><option>Geist</option><option>Drache</option>
+          <option>Unlicht</option><option>Stahl</option><option>Fee</option>
+        </select>
+      </div>
 
-    <div class="col-12">
-      <label for="attacks" class="form-label">Attacken (kommagetrennt)</label>
-      <input id="attacks" class="form-control" placeholder="Donnerblitz, Ruckzuckhieb">
-      <div class="form-text">Mehrere Attacken mit Komma trennen.</div>
-    </div>
+      <div class="col-12">
+        <label for="attacks" class="form-label">Attacken (kommagetrennt)</label>
+        <input id="attacks" class="form-control" placeholder="Donnerblitz, Ruckzuckhieb" formControlName="attacks">
+        <div class="form-text">Mehrere Attacken mit Komma trennen.</div>
+      </div>
 
-    <div class="col-12">
-      <button type="button" class="btn btn-primary">Speichern</button>
-      <button type="reset" class="btn btn-outline-secondary ms-2">Zurücksetzen</button>
-    </div>
-  </form>
-   </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Speichern</button>
+        <button type="reset" class="btn btn-outline-secondary ms-2">Zurücksetzen</button>
+      </div>
+    </form>
+  </div>
 </div>
