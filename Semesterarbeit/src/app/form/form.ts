@@ -5,7 +5,7 @@ import { BackendService } from '../shared/backend';
 import { Pokemon } from '../shared/pokemon';
 
 
-
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-form',
@@ -52,6 +52,7 @@ export class Form {
       await this.backend.create(dto);       // ⬅️ HIER passiert das Speichern
       this.successMsg = 'Gespeichert.';
       this.form.reset();
+      this.showToast();
     } catch (e: any) {
       console.error(e);
       this.errorMsg = 'Speichern fehlgeschlagen.';
@@ -65,4 +66,12 @@ export class Form {
     this.successMsg = '';
     this.errorMsg = '';
   }
+
+  private showToast() {
+    const toastElement = document.getElementById('saveToast');
+    if (toastElement) {
+      const toast = new bootstrap.Toast(toastElement);
+      toast.show();
+    }
+}
 }
