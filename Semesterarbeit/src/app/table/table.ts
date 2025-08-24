@@ -1,6 +1,6 @@
-import { Component,ElementRef, inject, OnInit, ViewChild } from '@angular/core';
+import { Component,ElementRef, Inject, inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { Pokemon } from '../shared/pokemon';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { BackendService } from '../shared/backend';
 
 declare const bootstrap: any; 
@@ -25,6 +25,8 @@ private backend = inject(BackendService);
   private pendingDeleteId: string | null = null;
   pendingDeleteName = '';
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   async ngOnInit() {
     try {
       this.pokemons = await this.backend.getAll();
@@ -37,6 +39,15 @@ private backend = inject(BackendService);
 
     if (this.deleteToastEl?.nativeElement) {
       this.deleteToast = new bootstrap.Toast(this.deleteToastEl.nativeElement, { autohide: false });
+    }
+  }
+  ngAfterViewInit() {
+    // nur im Browser initialisieren
+    if (isPlatformBrowser(this.platformId)) {
+      const bs = (window as any).bootstrap; //   (Hier Hilfe von ChatGPT, weil im Browser funtionsfähig trotzdem ein Fehler im Terminal angezeigt
+      if (bs && this.deleteToastEl?.nativeElement) {
+        this.deleteToast = new bs.Toast(this.deleteToastEl.nativeElement, { autohide: false });
+      }
     }
   }
   filterPokemon(nameValue: string, typeValue: string): void {
