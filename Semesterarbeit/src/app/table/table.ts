@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component,ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { Pokemon } from '../shared/pokemon';
 import { CommonModule } from '@angular/common';
 import { BackendService } from '../shared/backend';
 
+declare const bootstrap: any; 
 @Component({
   selector: 'app-table',
   imports: [CommonModule],
@@ -18,6 +19,11 @@ private backend = inject(BackendService);
   error = '';
   searchName = '';
     searchType = '';
+    
+    @ViewChild('deleteToastEl', { static: true }) deleteToastEl!: ElementRef<HTMLDivElement>;
+  private deleteToast!: any;
+  private pendingDeleteId: string | null = null;
+  pendingDeleteName = '';
 
   async ngOnInit() {
     try {
@@ -27,6 +33,10 @@ private backend = inject(BackendService);
       this.error = (e as Error).message ?? 'Fehler beim Laden';
     } finally {
       this.loading = false;
+    }
+
+    if (this.deleteToastEl?.nativeElement) {
+      this.deleteToast = new bootstrap.Toast(this.deleteToastEl.nativeElement, { autohide: false });
     }
   }
   filterPokemon(nameValue: string, typeValue: string): void {
@@ -64,12 +74,36 @@ onEdit(p: Pokemon) {
 }
 
 async onRemove(id: string) {
-  await this.backend.delete(id);                                
-  this.pokemons = this.pokemons.filter(x => x._id !== id);      // UI aktualisieren
-  this.view = [...this.pokemons];
+    const p = this.pokemons.find(x => x._id === id);
+    if (!p || !this.deleteToast) return;
+
+    this.pendingDeleteId = id;
+    this.pendingDeleteName = p.name;
+    this.deleteToast.show();
+  }
+  async onConfirmDelete(yes: boolean) {
+    if (!this.deleteToast) return;
+    this.deleteToast.hide();
+
+    if (!yes || !this.pendingDeleteId) {
+      this.pendingDeleteId = null;
+      this.pendingDeleteName = '';
+      return;
+    }
+
+    const id = this.pendingDeleteId;
+    this.pendingDeleteId = null;
+    this.pendingDeleteName = '';
+
+    // tatsächliches Löschen
+    await this.backend.delete(id);
+
+    // UI aktualisieren
+    this.pokemons = this.pokemons.filter(x => x._id !== id);
+    this.view = [...this.pokemons];
+  }
 }
 
 
 
-}
 
