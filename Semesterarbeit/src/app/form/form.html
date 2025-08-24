@@ -65,6 +65,7 @@
         <button type="reset" class="btn btn-outline-secondary ms-2">Zurücksetzen</button>
       </div>
     </form>
+
     <div class="top-50 start-50 translate-middle position-absolute" style="z-index: 11;">
   <div id="saveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
@@ -75,5 +76,18 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
+  <div id="errorToast" class="toast text-bg-danger border-0 shadow-lg"
+       role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        ❌ {{ errorMsg }}
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto"
+              data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
   </div>
 </div>

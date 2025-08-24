@@ -28,6 +28,7 @@ export class Form {
   errorMsg = '';
 
   constructor(private backend: BackendService) {}
+  
 
   async onSubmit(): Promise<void> {
     this.successMsg = '';
@@ -56,6 +57,7 @@ export class Form {
     } catch (e: any) {
       console.error(e);
       this.errorMsg = 'Speichern fehlgeschlagen.';
+      this.showErrorToast();
     } finally {
       this.saving = false;
     }
@@ -74,4 +76,11 @@ export class Form {
       toast.show();
     }
 }
+private showErrorToast() {
+    const el = document.getElementById('errorToast');
+    if (el) {
+      const toast = new bootstrap.Toast(el);
+      toast.show();
+    }
+  }
 }
