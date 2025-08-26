@@ -4,9 +4,10 @@ import { Form as Form } from './form/form';
 import { Table as Table } from './table/table';
 
 
-export const routes: Routes = [ { path: 'create', component: Form }, 
-  { path: 'read',   component: Table }, 
-  { path: '', pathMatch: 'full', redirectTo: 'read' },
-  {path: 'home', component: Home }, 
+export const routes: Routes = [ { path: 'create', component: Form },
+{ path: 'read',   component: Table },
+{ path: 'home',   component: Home },
+{ path: '', pathMatch: 'full', redirectTo: 'read' }
+
  
 ];
