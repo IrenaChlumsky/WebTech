@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header} from './header/header';
 import { Footer } from './footer/footer';
@@ -12,5 +12,5 @@ import { Nav } from './nav/nav';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('Semesterarbeit');
+  
 }
