@@ -106,15 +106,18 @@ async onRemove(id: string) {
     this.pendingDeleteId = null;
     this.pendingDeleteName = '';
 
-    // tatsächliches Löschen
-    await this.backend.delete(id);
+    try {
+    await this.backend.delete(id);   // Versuch zu löschen
 
     // UI aktualisieren
     this.pokemons = this.pokemons.filter(x => x._id !== id);
     this.view = [...this.pokemons];
+  } catch (e) {
+    console.error(' Fehler beim Löschen:', e);  // Fehler abfangen
+   
   }
 }
-
+}
 
 
 
