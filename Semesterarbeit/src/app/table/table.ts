@@ -2,15 +2,15 @@ import { Component,ElementRef, Inject, inject, OnInit, PLATFORM_ID, ViewChild } 
 import { Pokemon } from '../shared/pokemon';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { BackendService } from '../shared/backend';
+import { AfterViewInit } from '@angular/core';
 
-declare const bootstrap: any; 
 @Component({
   selector: 'app-table',
   imports: [CommonModule],
   templateUrl: './table.html',
   styleUrl: './table.css'
 })
-export class Table implements OnInit {
+export class Table implements OnInit, AfterViewInit {
 private backend = inject(BackendService);
 
   pokemons: Pokemon[] = [];
@@ -20,7 +20,7 @@ private backend = inject(BackendService);
   searchName = '';
     searchType = '';
     
-    @ViewChild('deleteToastEl', { static: true }) deleteToastEl!: ElementRef<HTMLDivElement>;
+   @ViewChild('deleteToastEl') deleteToastEl!: ElementRef<HTMLDivElement>;
   private deleteToast!: any;
   private pendingDeleteId: string | null = null;
   pendingDeleteName = '';
@@ -37,9 +37,6 @@ private backend = inject(BackendService);
       this.loading = false;
     }
 
-    if (this.deleteToastEl?.nativeElement) {
-      this.deleteToast = new bootstrap.Toast(this.deleteToastEl.nativeElement, { autohide: false });
-    }
   }
   ngAfterViewInit() {
     // nur im Browser initialisieren
