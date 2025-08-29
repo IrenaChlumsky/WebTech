@@ -18,7 +18,7 @@ private backend = inject(BackendService);
   loading = true;
   error = '';
   searchName = '';
-    searchType = '';
+  searchType = '';
     
    @ViewChild('deleteToastEl') deleteToastEl!: ElementRef<HTMLDivElement>;
   private deleteToast!: any;
