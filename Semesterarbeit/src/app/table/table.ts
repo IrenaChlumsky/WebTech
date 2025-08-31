@@ -77,11 +77,8 @@ private backend = inject(BackendService);
     typeInput.value = '';
     this.view = [...this.pokemons];
   }
-onEdit(p: Pokemon) {
-  console.log('edit', p);
-}
 
-async onRemove(id: string) {
+ onRemove(id: string) {
     const p = this.pokemons.find(x => x._id === id);
     if (!p || !this.deleteToast) return;
 

@@ -35,11 +35,13 @@
           Zurücksetzen
         </button>
 
-        <span class="count" *ngIf="view">
-          {{ view.length }} / {{ pokemons.length }} Einträge
-        </span>
-      </div>
-    </div>
+      @if (view) {
+  <span class="count">
+    {{ view.length }} / {{ pokemons.length }} Einträge
+  </span>
+      }
+       </div> 
+  </div>
   }
 
   @if (!loading && !error) {
