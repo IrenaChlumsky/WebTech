@@ -101,13 +101,13 @@ private backend = inject(BackendService);
     this.pendingDeleteName = '';
 
     try {
-    await this.backend.delete(id);   // Versuch zu löschen
+    await this.backend.delete(id);   
 
-    // UI aktualisieren
+    
     this.pokemons = this.pokemons.filter(x => x._id !== id);
     this.view = [...this.pokemons];
   } catch (e) {
-    console.error(' Fehler beim Löschen:', e);  // Fehler abfangen
+    console.error(' Fehler beim Löschen:', e);  
    
   }
 }
