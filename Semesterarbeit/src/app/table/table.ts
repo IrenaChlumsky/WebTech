@@ -1,8 +1,10 @@
-import { Component,ElementRef, Inject, inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Component,ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { Pokemon } from '../shared/pokemon';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { BackendService } from '../shared/backend';
 import { AfterViewInit } from '@angular/core';
+
+declare const bootstrap: any;
 
 @Component({
   selector: 'app-table',
@@ -10,6 +12,7 @@ import { AfterViewInit } from '@angular/core';
   templateUrl: './table.html',
   styleUrl: './table.css'
 })
+
 export class Table implements OnInit, AfterViewInit {
 private backend = inject(BackendService);
 
@@ -20,12 +23,12 @@ private backend = inject(BackendService);
   searchName = '';
   searchType = '';
     
-   @ViewChild('deleteToastEl') deleteToastEl!: ElementRef<HTMLDivElement>;
+   @ViewChild('deleteToastEl') deleteToastEl!: ElementRef<HTMLDivElement>; //bootstrap Toast Element show,hide - chat gpt
   private deleteToast!: any;
   private pendingDeleteId: string | null = null;
   pendingDeleteName = '';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+ 
 
   async ngOnInit() {
     try {
@@ -38,15 +41,12 @@ private backend = inject(BackendService);
     }
 
   }
-  ngAfterViewInit() {
-    // nur im Browser initialisieren
-    if (isPlatformBrowser(this.platformId)) {
-      const bs = (window as any).bootstrap; //   (Hier Hilfe von ChatGPT, weil im Browser funtionsfähig trotzdem ein Fehler im Terminal angezeigt
-      if (bs && this.deleteToastEl?.nativeElement) {
-        this.deleteToast = new bs.Toast(this.deleteToastEl.nativeElement, { autohide: false });
-      }
-    }
-  }
+  ngAfterViewInit(): void {
+  if (!this.deleteToastEl?.nativeElement) return;         // fehlerbehebung durch chat gpt
+  this.deleteToast = new bootstrap.Toast(this.deleteToastEl.nativeElement, {
+    autohide: false
+  });
+}
   filterPokemon(nameValue: string, typeValue: string): void {
     this.searchName = nameValue.trim();
     this.searchType = typeValue.trim();
