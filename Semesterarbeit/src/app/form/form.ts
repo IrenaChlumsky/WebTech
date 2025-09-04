@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BackendService } from '../shared/backend';
-import { Pokemon } from '../shared/pokemon';
+
+import { Pokemon, PokemonType } from '../shared/pokemon';
+
 
 
 declare var bootstrap: any;
@@ -18,7 +20,7 @@ declare var bootstrap: any;
 export class Form {
   form = new FormGroup({
     name:   new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
-    level:  new FormControl<number | null>(null, [Validators.required, Validators.min(1), Validators.max(100)]),
+    level:  new FormControl<number | null>(null, [Validators.required, Validators.min(1), Validators.max(100)]), //Startwert null
     type1:  new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
     type2:  new FormControl<string>(''),
     attacks:new FormControl<string>(''),
@@ -32,25 +34,35 @@ export class Form {
 
   async onSubmit(): Promise<void> {
     this.successMsg = '';
-    this.errorMsg = '';
+    
     if (this.form.invalid) {
       this.form.markAllAsTouched();
-      console.log('Formular ist ungültig');
-      return;
+     return;
     }
 
-     this.saving = true;
-    const dto = {
-  ...(this.form.getRawValue() as any),
-  level: Number(this.form.value.level ?? 0),
-  attacks: (this.form.value.attacks ?? '')
-            .split(',')
-            .map((s: string) => s.trim())
-            .filter(Boolean)
-} as Pokemon;
+     
+  // 1) Rohwerte holen
+  const raw = this.form.getRawValue();;
+  const level = Number(raw.level ?? 0);
+  const type1 = raw.type1 as PokemonType;                      
+  const type2 = raw.type2 ? (raw.type2 as PokemonType) : undefined;
+  const attacks = (raw.attacks ?? '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(s => s.length > 0);
+    
+  const dataObject: Pokemon = {
+    name: raw.name ?? '',
+    level,
+    type1,
+    type2,
+    attacks
+  };
+
+
     
       try {
-      await this.backend.create(dto);       // ⬅️ HIER passiert das Speichern
+      await this.backend.create(dataObject);       //  HIER passiert das Speichern
       this.successMsg = 'Gespeichert.';
       this.form.reset();
       this.showToast();

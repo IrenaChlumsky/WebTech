@@ -6,22 +6,26 @@
       <div class="col-md-6">
         <label for="name" class="form-label">Name *</label>
         <input id="name" class="form-control" placeholder="z. B. Pikachu" formControlName="name">
-        <div class="text-danger mt-1"
-             *ngIf="form.controls.name.invalid && form.controls.name.touched">
-          Name ist erforderlich.
-        </div>
-      </div>
+       
+           @if (form.controls.name.touched && form.controls.name.hasError('required')) {
+          <div class="text-danger mt-1">Name ist erforderlich.</div>
+        }
+     </div>
 
       <div class="col-md-6">
         <label for="level" class="form-label">Level *</label>
         <input id="level" type="number" min="1" max="100" class="form-control" placeholder="1–100"
                formControlName="level">
-        <div class="text-danger mt-1"
-             *ngIf="form.controls.level.errors?.['required'] && form.controls.level.touched">
-          Level ist erforderlich.
-        </div>
-        <div class="text-danger mt-1" *ngIf="form.controls.level.errors?.['min'] && form.controls.level.touched">Level ≥ 1</div>
-        <div class="text-danger mt-1" *ngIf="form.controls.level.errors?.['max'] && form.controls.level.touched">Level ≤ 100</div>
+       
+               @if (form.controls.level.touched) {
+          @if (form.controls.level.hasError('required')) {
+            <div class="text-danger mt-1">Level ist erforderlich.</div>
+          } @else if (form.controls.level.hasError('min')) {
+            <div class="text-danger mt-1">Level ≥ 1</div>
+          } @else if (form.controls.level.hasError('max')) {
+            <div class="text-danger mt-1">Level ≤ 100</div>
+          }
+        }
       </div>
 
       <div class="col-md-6">
@@ -35,10 +39,9 @@
           <option>Gestein</option><option>Geist</option><option>Drache</option>
           <option>Unlicht</option><option>Stahl</option><option>Fee</option>
         </select>
-        <div class="text-danger mt-1"
-             *ngIf="form.controls.type1.invalid && form.controls.type1.touched">
-          Haupttyp ist erforderlich.
-        </div>
+       @if (form.controls.type1.touched && form.controls.type1.invalid) {
+          <div class="text-danger mt-1">Haupttyp ist erforderlich.</div>
+        }
       </div>
 
       <div class="col-md-6">
@@ -55,7 +58,7 @@
       </div>
 
       <div class="col-12">
-        <label for="attacks" class="form-label">Attacken (kommagetrennt)</label>
+        <label for="attacks" class="form-label">Attacken </label>
         <input id="attacks" class="form-control" placeholder="Donnerblitz, Ruckzuckhieb" formControlName="attacks">
         <div class="form-text">Mehrere Attacken mit Komma trennen.</div>
       </div>
@@ -84,7 +87,7 @@
        role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
       <div class="toast-body">
-        ❌ {{ errorMsg }}
+        {{ errorMsg }}
       </div>
       <button type="button" class="btn-close btn-close-white me-2 m-auto"
               data-bs-dismiss="toast" aria-label="Close"></button>
