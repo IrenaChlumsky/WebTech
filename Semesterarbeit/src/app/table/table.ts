@@ -41,11 +41,13 @@ private backend = inject(BackendService);
     }
 
   }
-  ngAfterViewInit(): void {
-  if (!this.deleteToastEl?.nativeElement) return;         // fehlerbehebung durch chat gpt
-  this.deleteToast = new bootstrap.Toast(this.deleteToastEl.nativeElement, {
-    autohide: false
-  });
+ngAfterViewInit(): void {
+  if (!this.deleteToastEl?.nativeElement) return;                       // DOM vorhanden?
+  if (typeof window === 'undefined' || typeof (window as any).bootstrap === 'undefined') return; // Nur im Browser + Bootstrap vorhanden
+
+  const bs = (window as any).bootstrap;
+  this.deleteToast = new bs.Toast(this.deleteToastEl.nativeElement, { autohide: false }); // problem mit laden von Bootstrap Hilfe durch chat gpt
+
 }
   filterPokemon(nameValue: string, typeValue: string): void {
     this.searchName = nameValue.trim();
