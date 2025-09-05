@@ -17,7 +17,7 @@ router.post('/pokemon', async(req, res) => {
         attacks: req.body.attacks
     });
     await newPokemon.save();
-    res.send(newPokemon);
+    res.send(newPokemon); // return the new pokemon with id
 });
 
 
