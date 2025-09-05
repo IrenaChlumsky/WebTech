@@ -25,7 +25,7 @@ export class Form {
     type2:  new FormControl<string>(''),
     attacks:new FormControl<string>(''),
   });
-  saving = false;
+ 
   successMsg = '';
   errorMsg = '';
 
@@ -70,9 +70,7 @@ export class Form {
       console.error(e);
       this.errorMsg = 'Speichern fehlgeschlagen.';
       this.showErrorToast();
-    } finally {
-      this.saving = false;
-    }
+    } 
   }
 
   onCancel(): void {
