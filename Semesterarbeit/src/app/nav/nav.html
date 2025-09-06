@@ -1,13 +1,8 @@
-<nav class="sideNav">
-  <ul>
-    <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      Home
-       </a></li>
-    <li><a routerLink="/create" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      Pokémon eingeben
-    </a></li>
-    <li><a routerLink="/read" routerLinkActive="active">
-      Meine Pokémon
-    </a></li>
-  </ul>
+
+<nav class="nav-bar">
+  <div class="container">
+    <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+    <a class="nav-link" routerLink="/read" routerLinkActive="active">Liste</a>
+    <a class="nav-link" routerLink="/create" routerLinkActive="active">Neu</a>
+  </div>
 </nav>
