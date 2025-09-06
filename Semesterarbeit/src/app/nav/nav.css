@@ -1,17 +1,16 @@
 :host {
   display: block;
   position: sticky;
-  padding: auto;                      /* unter dem Header kleben */
+  padding: auto;                    
   z-index: 1000;
 }
 
-/* dunkle, flache Nav */
 
 
 .nav-bar .container {
   display: flex;
   gap: .75rem;
-  overflow-x: auto;             /* mobil: horizontal scrollen */
+  overflow-x: auto;           
 }
 
 .nav-link {
@@ -22,6 +21,6 @@
 }
 .nav-link.active,
 .nav-link:hover {
-  background: rgba(255,210,63,.1);   /* gelblicher Hover */
+  background: rgba(255,210,63,.1);  
   color: #FFD23F;
 }
