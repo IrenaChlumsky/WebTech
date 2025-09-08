@@ -1,11 +1,27 @@
 
-.layout  { display: flex; flex-direction: column; min-height: 100vh; }
-.body    { display: flex; flex: 1; gap: 1rem; }
-.sideNav { flex: 0 0 220px; }               
-.content { flex: 1 1 auto; min-width: 0; padding: 1rem; overflow: auto; }
+.layout  { 
+  display: flex; 
+  flex-direction: column; 
+  min-height: 100vh; 
+  background-color: rgb(31, 31, 31);
+}
+
+.body    { 
+  display: flex; 
+  flex: 1; 
+  gap: 1rem; 
+}
+            
+.content {
+  display: flex;
+  justify-content: center; /* horizontal mittig */
+  padding: 1rem;
+  
+}
+
 
 
 @media (max-width: 768px) {
   .body    { flex-direction: column; }
-  .sideNav { flex: none; order: -1; }       
+      
 }

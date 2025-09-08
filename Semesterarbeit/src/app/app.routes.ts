@@ -5,10 +5,11 @@ import { Table as Table } from './table/table';
 
 
 export const routes: Routes = [
-{ path: 'create', component: Form },
-{ path: 'read',   component: Table },
-{ path: 'home',   component: Home },
-{ path: '', pathMatch: 'full', redirectTo: 'read' }
+{ path: '', pathMatch: 'full', redirectTo: 'home' },
+{ path: 'form', component: Form },
+{ path: 'table',   component: Table },
+{ path: 'home',   component: Home }
+
 
  
 ];
