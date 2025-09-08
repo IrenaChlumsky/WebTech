@@ -1,8 +1,15 @@
-
-<nav class="nav-bar">
-  <div class="container">
-    <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
-    <a class="nav-link" routerLink="/read" routerLinkActive="active">Liste</a>
-    <a class="nav-link" routerLink="/create" routerLinkActive="active">Neu</a>
+<nav class="site-nav">
+  <div class="nav-wrap">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/table" routerLinkActive="active">Meine Pokemon</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/form" routerLinkActive="active">Pokemon Eingeben</a>
+      </li>
+    </ul>
   </div>
 </nav>

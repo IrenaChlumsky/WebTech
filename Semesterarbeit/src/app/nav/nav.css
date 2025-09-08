@@ -1,26 +1,37 @@
-:host {
-  display: block;
-  position: sticky;
-  padding: auto;                    
-  z-index: 1000;
+
+.nav-wrap {
+  margin: 0 auto;
+  padding: .6rem 16px;
 }
 
-
-
-.nav-bar .container {
+.nav {
   display: flex;
-  gap: .75rem;
-  overflow-x: auto;           
+  justify-content: center; 
+  gap: .20rem;
+  list-style: none;
+  flex-wrap:nowrap;
+  white-space:nowrap;
+}
+
+.nav-item {
+  display: inline-block;
 }
 
 .nav-link {
-  color: #050505;
-  padding: .6rem .8rem;
-  border-radius: .5rem;
-  white-space: nowrap;
+  border-radius: 9999px;
+  padding: .20rem .40rem;
+  font-weight: 500;
+  color: #eceeef;
+  background: transparent;
 }
-.nav-link.active,
 .nav-link:hover {
-  background: rgba(255,210,63,.1);  
-  color: #FFD23F;
+  background: #f3f4f6;
+  color: #111827;
+}
+.nav-link.active {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(37,99,235,.25);
+  padding: .20rem .40rem;
+  font-weight: 500;
 }
