@@ -5,6 +5,20 @@
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
+.table-card {
+   background: linear-gradient(135deg,#8e7206,#6e0505);
+  color:#fff;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
+
+  
+  max-width: 960px;  
+  width: 100%;
+  margin: 20px auto 0; 
+  padding: 2.5rem 2rem;
+}
+
 
 .filters {
   display: flex;
@@ -21,11 +35,22 @@
 .filters input {
   min-width: 18ch; /* etwas Breite, sonst wackelt's */
 }
+.btn{
+  color: rgb(252, 249, 249);
+  background-color: #0a0a0a;
+}
+.btn:hover{
+  background-color: #404039;
+}
 
 .actions {
   display: flex;
   align-items: center;
   gap: .75rem;
+  color:black
 }
 
 .empty { text-align: center; opacity: .7; }
+@media (max-width: 768px){
+ .table-card h2{ font-size: 1.4rem; }
+}
