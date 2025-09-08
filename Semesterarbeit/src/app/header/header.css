@@ -14,7 +14,7 @@
 .header h1{
   grid-column: 2;              
   margin: 0;
-  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
   line-height: 1.1;
 
   letter-spacing: .4px;        
@@ -24,8 +24,8 @@
 
 .logo{
   grid-column: 3;            
-  justify-self: end;
-  max-height: 64px;
+  justify-self: left;
+  max-height: 32px;
   width: auto;
   display: block;
   object-fit: contain;
