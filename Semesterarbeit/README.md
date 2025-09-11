@@ -19,7 +19,7 @@ Die Anwendung ermöglicht es gefangene Pokemon in den Pokemon Spielen zu Tracken
 
 
 
-**Vorrausetzungen**
+**Voraussetzungen**
 
 Node.js
 Angular CLI (falls nicht installiert: npm install -g @angular/cli)
@@ -60,5 +60,9 @@ node server.js
 
 **Formular**
 ![Formular](screenshots/formular.png)
+
+## Autorin
+Irena Chlumsky  
+HTW Berlin – Modul Webtechnologien
 
  
