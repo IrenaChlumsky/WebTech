@@ -41,6 +41,10 @@ cd WebTech/SemesterarbeitBackend
 npm install
 node server.js  
 
+**Anwendung im Browser starten**
+
+http://localhost:4200
+
 **KI- Nutzung:**
 
 *Chat GPT* 
