@@ -10,12 +10,12 @@ Die Anwendung ermöglicht es gefangene Pokemon in den Pokemon Spielen zu Tracken
 
 **Features**
 
-- Pokémon-Liste mit Filter nach Name und Typ  
-- Formular zum Anlegen neuer Pokémon  
+- Pokémon-Liste mit Filter nach Name und Typ (Read) 
+- Formular zum Anlegen neuer Pokémon (Create) 
 - Speicherung im MongoDB-Backend  
-- Löschen von Einträgen mit Bestätigungs-Dialog (Toast)  
+- Löschen von Einträgen mit Bestätigungs-Dialog (Delete,Toast)  
 - Responsives Design mit Bootstrap  
-
+- Bearbeitung bestehender Einträge (Update)
 
 
 
