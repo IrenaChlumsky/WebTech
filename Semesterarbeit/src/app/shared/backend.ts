@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Pokemon } from './pokemon';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,4 +35,25 @@ export class BackendService {
   async delete(id: string): Promise<void> {
     await fetch(`${this.apiURL}/pokemon/${id}`, { method: 'DELETE' });
   }
+   async getOne(id: string): Promise<Pokemon> {
+  const res = await fetch(`${this.apiURL}/pokemon/${id}`);
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`GET /pokemon/${id} failed: ${res.status} ${res.statusText} ${text}`);
+  }
+  return (await res.json()) as Pokemon;
+}
+
+async update(id: string, data: Partial<Pokemon>): Promise<Pokemon> {
+  const res = await fetch(`${this.apiURL}/pokemon/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`PUT /pokemon/${id} failed: ${res.status} ${res.statusText} ${text}`);
+  }
+  return (await res.json()) as Pokemon;
+}
 }

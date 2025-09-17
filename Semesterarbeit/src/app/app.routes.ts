@@ -8,7 +8,8 @@ export const routes: Routes = [
 { path: '', pathMatch: 'full', redirectTo: 'home' },
 { path: 'form', component: Form },
 { path: 'table',   component: Table },
-{ path: 'home',   component: Home }
+{ path: 'home',   component: Home },
+{ path: 'form/:id', component: Form }
 
 
  

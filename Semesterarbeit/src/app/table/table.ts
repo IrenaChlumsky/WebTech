@@ -3,7 +3,7 @@ import { Pokemon } from '../shared/pokemon';
 import { CommonModule } from '@angular/common';
 import { BackendService } from '../shared/backend';
 import { AfterViewInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 declare const bootstrap: any;
 
 @Component({
@@ -15,7 +15,7 @@ declare const bootstrap: any;
 
 export class Table implements OnInit, AfterViewInit {
 private backend = inject(BackendService);
-
+  private router  = inject(Router); 
   pokemons: Pokemon[] = [];
    view: Pokemon[] = [];
   loading = true;
@@ -113,6 +113,10 @@ ngAfterViewInit(): void {
    
   }
 }
+onEdit(id: string) {
+  this.router.navigate(['/form', id]);
+}
+
 }
 
 

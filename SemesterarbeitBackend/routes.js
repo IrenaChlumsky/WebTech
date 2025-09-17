@@ -8,6 +8,7 @@ router.get('/pokemon', async(req, res) => {
     res.send(allPokemon);
  
 });
+
 router.post('/pokemon', async(req, res) => {
     const newPokemon = new Pokemon({
         name: req.body.name,
@@ -17,7 +18,7 @@ router.post('/pokemon', async(req, res) => {
         attacks: req.body.attacks
     });
     await newPokemon.save();
-    res.send(newPokemon); // return the new pokemon with id
+    res.send(newPokemon); 
 });
 
 
@@ -41,6 +42,25 @@ router.delete('/pokemon/:id', async(req, res) => {
         res.status(404)
         res.send({ error: "Pokemon does not exist!" })
     }
+});
+router.put('/pokemon/:id', async (req, res) => {
+  try {
+    const { name, level, type1, type2, attacks } = req.body;
+
+    const updated = await Pokemon.findByIdAndUpdate(
+      req.params.id,
+      { name, level, type1, type2, attacks },
+      { new: true, runValidators: true }
+    );
+
+    if (!updated) {
+      return res.status(404).send({ error: 'Pokemon does not exist!' });
+    }
+    res.send(updated);
+  } catch (err) {
+    console.error(err);
+    res.status(400).send({ error: 'Update failed' });
+  }
 });
 
 
