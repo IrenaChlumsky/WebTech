@@ -49,7 +49,7 @@ http://localhost:4200
 
 *Chat GPT* 
  - Fehlerbehebung(Debugging): Unterstützung bei der Analyse und Korrektur von Fehlern in Angular- und TypeScript-Code.
- - LayoutHilfe: Tipps und Vorschläge für CSS-Anpassungen, responsives Design und die optische Gestaltun
+ - LayoutHilfe: Tipps und Vorschläge für CSS-Anpassungen, responsives Design und die optische Gestaltung
  - Verständnisfragen: Erklärungen zu Angular-Konzepten (Komponenten, Services, Lifecycle Hooks), Backend-Anbindung (Express, MongoDB) und  Projektstruktur.
  - Projektplannung und Chronologie: Unterstützung bei der Strukturierung des Arbeitsablaufs 
 
